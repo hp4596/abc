@@ -1,0 +1,42 @@
+https://docs.google.com/spreadsheets/d/1mASY-qX2RzGuQiucnW0LvbnKDlIhdLJ-/edit?usp=drive_link&ouid=115241518167180793257&rtpof=true&sd=true
+
+import pandas as pd
+df=pd.read_excel("research_student.xlsx")
+df.shape
+df.info()
+df.describe()
+df.head()
+df.tail()
+df.isnull()
+df.isnull().sum()
+df.dtypes
+df.drop([0,221,222])
+df.info()
+df=df.fillna(0)
+df.isnull().sum()
+df.columns
+
+imp_columns=['Marks[10th]', 'Marks[12th]', 'GPA 1', 'Rank', 'Normalized Rank', 'CGPA',
+'Current Back', 'Ever Back', 'GPA 2', 'GPA 3', 'GPA 4', 'GPA 5',
+'GPA 6', 'Olympiads Qualified', 'Technical Projects', 'Tech Quiz',
+'Engg. Coaching', 'NTSE Scholarships', 'Miscellany Tech Events']
+
+df[imp_columns]
+
+from sklearn.preprocessing import StandardScaler
+scaler=StandardScaler()
+
+df[imp_columns]=scaler.fit_transform(df[imp_columns])
+df[imp_columns]
+
+from sklearn.preprocessing import LabelEncoder
+encoding_list = ['Branch','Gender','Board[10th]','Board[12th]','Category']
+df[encoding_list] = df[encoding_list].astype(str)
+df[encoding_list] = df[encoding_list].apply(lambda col: LabelEncoder().fit_transform(col))  
+OR 
+from sklearn.preprocessing import LabelEncoder
+encoding_list = ['Branch','Gender','Board[10th]','Board[12th]','Category']
+df[encoding_list] = df[encoding_list].apply(LabelEncoder().fit_transform)
+
+df[encoding_list]
+df. info()
