@@ -155,6 +155,3 @@ int main()
 
     return 0;
 }
-PR_2 Astr.cpp
-Displaying PR_6_Expert System.py.
-Next
