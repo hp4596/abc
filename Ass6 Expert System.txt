@@ -1,0 +1,45 @@
+# Expert System - Help Desk Management
+
+print("=== Help Desk Expert System ===")
+
+while True:
+
+    print("\nChoose your problem:")
+    print("1. Internet not working")
+    print("2. Computer slow")
+    print("3. Printer not printing")
+    print("4. Forgot password")
+    print("5. Exit")
+
+    choice = int(input("Enter choice: "))
+
+    # Rule-Based Decisions
+    if choice == 1:
+        print("\nSolution:")
+        print("-> Check WiFi connection")
+        print("-> Restart router")
+        print("-> Contact network admin")
+
+    elif choice == 2:
+        print("\nSolution:")
+        print("-> Close unused programs")
+        print("-> Delete temporary files")
+        print("-> Restart computer")
+
+    elif choice == 3:
+        print("\nSolution:")
+        print("-> Check printer cable")
+        print("-> Ensure printer is ON")
+        print("-> Reinstall printer driver")
+
+    elif choice == 4:
+        print("\nSolution:")
+        print("-> Click 'Forgot Password'")
+        print("-> Reset using email or phone")
+
+    elif choice == 5:
+        print("\nExiting Expert System...")
+        break
+
+    else:
+        print("\nInvalid Choice")
