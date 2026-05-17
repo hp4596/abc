@@ -1,45 +1,48 @@
-# Expert System - Help Desk Management
+print("===================================")
+print(" Welcome to Customer Support Bot ")
+print("===================================")
 
-print("=== Help Desk Expert System ===")
+print("\nType 'bye' to exit the chatbot.\n")
+
+responses = {
+    "greeting": ["hi", "hello", "hey"],
+    "products": ["product", "products", "items"],
+    "price": ["price", "cost", "rate"],
+    "delivery": ["delivery", "shipping"],
+    "payment": ["payment", "upi", "card"],
+    "contact": ["contact", "email", "phone"]
+}
+
+reply = {
+    "greeting": "Hello! How can I help you?",
+    "products": "We offer laptops, mobiles, and accessories.",
+    "price": "Prices vary depending on the product.",
+    "delivery": "Delivery takes 3 to 5 working days.",
+    "payment": "We accept UPI, Cards, and Net Banking.",
+    "contact": "You can contact us at support@example.com"
+}
 
 while True:
 
-    print("\nChoose your problem:")
-    print("1. Internet not working")
-    print("2. Computer slow")
-    print("3. Printer not printing")
-    print("4. Forgot password")
-    print("5. Exit")
+    user = input("You: ").lower()
 
-    choice = int(input("Enter choice: "))
-
-    # Rule-Based Decisions
-    if choice == 1:
-        print("\nSolution:")
-        print("-> Check WiFi connection")
-        print("-> Restart router")
-        print("-> Contact network admin")
-
-    elif choice == 2:
-        print("\nSolution:")
-        print("-> Close unused programs")
-        print("-> Delete temporary files")
-        print("-> Restart computer")
-
-    elif choice == 3:
-        print("\nSolution:")
-        print("-> Check printer cable")
-        print("-> Ensure printer is ON")
-        print("-> Reinstall printer driver")
-
-    elif choice == 4:
-        print("\nSolution:")
-        print("-> Click 'Forgot Password'")
-        print("-> Reset using email or phone")
-
-    elif choice == 5:
-        print("\nExiting Expert System...")
+    if user == "bye":
+        print("Bot: Thank you for visiting. Have a nice day!")
         break
 
-    else:
-        print("\nInvalid Choice")
+    found = False
+
+    for key, keywords in responses.items():
+
+        for word in keywords:
+
+            if word in user:
+                print("Bot:", reply[key])
+                found = True
+                break
+
+        if found:
+            break
+
+    if not found:
+        print("Bot: Sorry, I did not understand your query.")
