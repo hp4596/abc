@@ -1,32 +1,48 @@
-print("ChatBot Started")
-print("Type 'bye' to stop\n")
+print("===================================")
+print(" Welcome to Customer Support Bot ")
+print("===================================")
+
+print("\nType 'bye' to exit the chatbot.\n")
+
+responses = {
+    "greeting": ["hi", "hello", "hey"],
+    "products": ["product", "products", "items"],
+    "price": ["price", "cost", "rate"],
+    "delivery": ["delivery", "shipping"],
+    "payment": ["payment", "upi", "card"],
+    "contact": ["contact", "email", "phone"]
+}
+
+reply = {
+    "greeting": "Hello! How can I help you?",
+    "products": "We offer laptops, mobiles, and accessories.",
+    "price": "Prices vary depending on the product.",
+    "delivery": "Delivery takes 3 to 5 working days.",
+    "payment": "We accept UPI, Cards, and Net Banking.",
+    "contact": "You can contact us at support@example.com"
+}
 
 while True:
 
-    user = input("You : ").lower()
+    user = input("You: ").lower()
 
-    # Rules
-    if user == "hi" or user == "hello":
-        print("Bot : Hello!")
-
-    elif user == "how are you":
-        print("Bot : I am fine.")
-
-    elif user == "what is your name":
-        print("Bot : My name is PyBot.")
-
-    elif user == "who made you":
-        print("Bot : I was created using Python.")
-
-    elif user == "what is python":
-        print("Bot : Python is a programming language.")
-
-    elif user == "pythagorean theorem":
-        print("Bot : a² + b² = c²")
-
-    elif user == "bye":
-        print("Bot : Goodbye")
+    if user == "bye":
+        print("Bot: Thank you for visiting. Have a nice day!")
         break
 
-    else:
-        print("Bot : Sorry, I don't understand.")
+    found = False
+
+    for key, keywords in responses.items():
+
+        for word in keywords:
+
+            if word in user:
+                print("Bot:", reply[key])
+                found = True
+                break
+
+        if found:
+            break
+
+    if not found:
+        print("Bot: Sorry, I did not understand your query.")
